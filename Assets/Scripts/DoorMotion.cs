@@ -24,14 +24,11 @@ public class DoorMotion : MonoBehaviour
     {
         anim.SetInteger("dir", dir);
         anim.SetBool("OpenDoor", true);
-        Debug.Log("Door is opening - " + anim.GetInteger("dir") + " " + anim.GetBool("OpenDoor"));
-
     }
 
     void OnTriggerExit(Collider other)
     {
         anim.SetInteger("dir", 0);
         anim.SetBool("OpenDoor", false);
-        Debug.Log("Door is closing - " + anim.GetInteger("dir") + " " + anim.GetBool("OpenDoor"));
     }
 }
