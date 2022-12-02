@@ -951,7 +951,6 @@ GameObject:
   - component: {fileID: 4205070211721268}
   - component: {fileID: 212726352600608274}
   - component: {fileID: 95481399084568216}
-  - component: {fileID: 114757282455824342}
   m_Layer: 0
   m_Name: red_flame_0 (3)
   m_TagString: Untagged
@@ -1046,19 +1045,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114757282455824342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1870638949154552}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03d835f862f58074b859165457db4dde, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cameraToLookAt: {fileID: 0}
 --- !u!1 &1909864849808374
 GameObject:
   m_ObjectHideFlags: 0
@@ -1319,7 +1305,6 @@ GameObject:
   - component: {fileID: 4097372989818590}
   - component: {fileID: 212884277470648342}
   - component: {fileID: 95754039560980406}
-  - component: {fileID: 114879299800770048}
   m_Layer: 0
   m_Name: red_flame_0 (3)
   m_TagString: Untagged
@@ -1414,16 +1399,3 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114879299800770048
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1953784708626756}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03d835f862f58074b859165457db4dde, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cameraToLookAt: {fileID: 0}
