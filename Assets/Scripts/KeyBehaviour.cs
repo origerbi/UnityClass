@@ -6,6 +6,7 @@ public class KeyBehaviour : MonoBehaviour
 {
     Animator keyAnim;
     Animator ChestAnim;
+    bool pickedUp;
     void Start()
     {
         keyAnim = this.gameObject.GetComponent<Animator>();
@@ -19,5 +20,14 @@ public class KeyBehaviour : MonoBehaviour
         {
             keyAnim.SetBool("animate", true);
         }
+    }
+
+    public void PickUp() {
+        pickedUp = true;
+        gameObject.SetActive(false);
+    }
+
+    public bool IsPickedUp() {
+        return pickedUp;
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class ChestMotion : MonoBehaviour
 {
     Animator anim;
-
+    public KeyBehaviour keyBehaivor;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,10 +14,15 @@ public class ChestMotion : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && anim.GetBool("canOpenChest"))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            anim.SetBool("openChest", true);
-            Debug.Log("space key was pressed");
+            if (anim.GetBool("canOpenChest") && !anim.GetBool("openChest"))
+            {
+                anim.SetBool("openChest", true);
+                Debug.Log("space key was pressed");
+                return;
+            }
+            keyBehaivor.PickUp();
         }
     }
 
