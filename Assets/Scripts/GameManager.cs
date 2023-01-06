@@ -17,6 +17,9 @@ public class GameManager : MonoBehaviour
     {
         if (instance == null)
         {
+            if(transform.parent != null)
+                transform.parent = null;
+                
             instance = this;
             spawnPoint = player.transform.position;
             DontDestroyOnLoad(gameObject);
