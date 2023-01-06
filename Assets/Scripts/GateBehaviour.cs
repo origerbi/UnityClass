@@ -2,24 +2,24 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class GateBehaviour : MonoBehaviour
 {
     private enum GateState { Unreachable, Locked, Unlocked };
     private GateState gateState = GateState.Unreachable;
 
-    // Start is called before the first frame update
-    void Start()
-    {
+    private NavMeshObstacle navMeshObstacle = null;
 
+    private void Awake()
+    {
+        navMeshObstacle = GetComponent<NavMeshObstacle>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (gateState == GateState.Locked)
             tryToUnlockGate();
-
     }
 
     private void tryToUnlockGate()
@@ -35,6 +35,8 @@ public class GateBehaviour : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             GetComponent<Animator>().SetTrigger("OpenGate");
+            navMeshObstacle.enabled = false;
+
             GameManager.instance.KeyUsed();
             gateState = GateState.Unlocked;
             TextPrompt.instance.hidePrompt();
@@ -44,17 +46,23 @@ public class GateBehaviour : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (gateState == GateState.Unreachable)
-            gateState = GateState.Locked;
+        if (other.TryGetComponent<PlayerMovement>(out PlayerMovement playerMovement))
+        {
+            if (gateState == GateState.Unreachable)
+                gateState = GateState.Locked;
+        }
 
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (gateState == GateState.Locked)
+        if (other.TryGetComponent<PlayerMovement>(out PlayerMovement playerMovement))
         {
-            gateState = GateState.Unreachable;
-            TextPrompt.instance.hidePrompt();
+            if (gateState == GateState.Locked)
+            {
+                gateState = GateState.Unreachable;
+                TextPrompt.instance.hidePrompt();
+            }
         }
     }
 }

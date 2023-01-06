@@ -33,20 +33,26 @@ public class ChestBehaviour : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (chestState == ChestState.Unreachable)
+        if (other.TryGetComponent<PlayerMovement>(out PlayerMovement playerMovement))
         {
-            TextPrompt.instance.showPrompt("Press Space to open chest");
-            chestState = ChestState.Closed;
+            if (chestState == ChestState.Unreachable)
+            {
+                TextPrompt.instance.showPrompt("Press Space to open chest");
+                chestState = ChestState.Closed;
+            }
         }
     }
 
 
     void OnTriggerExit(Collider other)
     {
-        TextPrompt.instance.hidePrompt();
+        if (other.TryGetComponent<PlayerMovement>(out PlayerMovement playerMovement))
+        {
+            TextPrompt.instance.hidePrompt();
 
-        if (chestState == ChestState.Closed)
-            chestState = ChestState.Unreachable;
+            if (chestState == ChestState.Closed)
+                chestState = ChestState.Unreachable;
+        }
     }
 
     void tryToOpenChest()
